@@ -270,12 +270,19 @@ index.js              Host 半：数据源、代理与缓存、扩展注册表�
 client.js             Client 半：侧边栏图标 + 主面板（React，单文件自带样式与 i18n）
 lib/anilist.js        AniList GraphQL（季度 / 搜索 / 详情 / 观看顺序）
 lib/bangumi.js        Bangumi v0 + 镜像降级
-lib/anich.js          AniCh 解析 + 索引（登录 / 注册 / 发码）
-lib/fqdm.js           FQDM（MacCMS）线路与换线
-lib/bilibili.js      哔哩哔哩（搜索 / 季度 / DASH / WBI 签名 / 字幕）
+lib/anich.js          AniCh 解析 + 索引（登录 / 注册 / 发码 / 线路过滤）
+lib/fqdm.js           FQDM（MacCMS）线路、换线与封面
+lib/bilibili.js       哔哩哔哩（搜索 / 季度 / DASH / 字幕 / 分段 seek）
+lib/wbi.js            哔哩哔哩 WBI 签名
+lib/chapters.js       章节 / 看点（pgc 时间轴）
+lib/anibt.js          AniBT 片源（集号与合集识别）
+lib/animetosho.js     AnimeTosho HTML 解析兜底
 lib/websource.js      AnimeFlow 声明式源（JSON / HTML 规则 → 扩展）
+lib/html.js           HTML 解析（声明式源共用）
+lib/xpath.js          最小 XPath 实现（声明式源选择器）
 lib/extensions.js     扩展注册表：manifest、schema 校验、启用状态、调用与超时
 lib/torrent-engine.js 内置 webtorrent 引擎 + qBittorrent 客户端 + ffmpeg 转码 + 打开外部播放器
+lib/render-stream.js  MSE manifest 生成（DASH 分片 / 时长 / 初始分片）
 lib/mpv.js            内嵌 mpv（wid + JSON IPC）
 lib/downloads.js      下载队列（在线流 / 种子流共用）
 lib/accounts.js       账号存储（掩码输出、mtime 校验）
