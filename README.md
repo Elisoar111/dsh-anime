@@ -4,6 +4,8 @@
   <img src="icon.svg" width="72" height="72" alt="dsh-anime">
 </p>
 
+**中文** · [English](README.en.md)
+
 在 [DeepSeek Harness](https://github.com/deepseek-ai) 里追番的一整页插件：季度新番、放送表、搜索、追番进度、
 番剧详情、在线播放、种子播放、下载、主题曲。以「侧边栏图标 + 主面板」的形式注册
 （`sidebar.panellist` id `dsh-anime` ⇄ `main` key `dsh-anime`），不是浮层、也不是小组件。
