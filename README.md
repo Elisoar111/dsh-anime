@@ -58,22 +58,71 @@
 
 ## 安装
 
-插件是一个普通的 DSH 插件包（`dsh.bundle.patch` + `dsh.client.platform = web`）。
+插件就是一个普通的 DSH 插件包（`dsh.bundle.patch` + `dsh.client.platform = web`），装法两种。
 
-**从本地目录安装（开发用）**——把仓库放到任意位置，然后在该 profile 的 `package.json` 里加一条依赖：
+### 方式一：从 GitHub 装（推荐）
+
+```bash
+# 把包装进 profile（等价于在 profile 目录里跑 pnpm add）
+dsh --profile desktop plugin add "git+https://github.com/Elisoar111/dsh-anime.git"
+
+# macOS / Linux 换成你的 profile 名（web / tui / …）
+dsh --profile web plugin add "git+https://github.com/Elisoar111/dsh-anime.git"
+```
+
+然后确认 profile 的 `package.json` 里 `dsh.profile.bundles` 含这一项——少了它插件不会被加载：
+
+```json
+{
+  "dsh": {
+    "profile": {
+      "bundles": ["@local/dsh-anime", "…其它插件"]
+    }
+  }
+}
+```
+
+重启 DSH（或在插件面板里关 → 开一次），侧边栏出现「追番」。
+
+### 方式二：本地开发装
+
+```bash
+git clone https://github.com/Elisoar111/dsh-anime.git
+cd dsh-anime
+npm install          # 运行时只依赖 webtorrent
+```
+
+在 profile 的 `package.json` 加一条依赖 + 一条 bundle，路径改成你 clone 的位置：
 
 ```json
 {
   "dependencies": {
     "@local/dsh-anime": "link:D:/path/to/dsh-anime"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": ["@local/dsh-anime"]
+    }
   }
 }
 ```
 
-文件在 `$DSH_HOME/profiles/<profile>/package.json`：Windows 默认 `%USERPROFILE%\.dsh\profiles\desktop\package.json`。
-改完重启 DSH（或在插件市场里关 → 开一次），侧边栏出现「追番」。
+```bash
+dsh --profile desktop plugin install     # 让 pnpm 建好链接
+```
 
-**从 GitHub 安装**：仓库地址填进 profile 的依赖（`git+https://github.com/<you>/dsh-anime.git`），其余同上。
+profile 文件位置：`$DSH_HOME/profiles/<profile>/package.json`，
+Windows 默认 `%USERPROFILE%\.dsh\profiles\desktop\package.json`。
+
+开发时改完 `index.js` / `lib/*.js`：重启一次插件（关 → 开）即可；改 `client.js` 还要刷新页面。
+
+### 可选外部依赖
+
+| 工具 | 用在哪 | 没有会怎样 |
+| --- | --- | --- |
+| `ffmpeg` | 在线流转码（HLS → fMP4）、种子下载合流 | 在线流播不了；种子流只能「用播放器打开」 |
+| `mpv` | 外置播放「用播放器打开」 | 少一个入口，内置播放器不受影响 |
+| `qBittorrent` | 把种子任务交给外部客户端 | 只能用内置 BT 引擎 |
 
 > 装好之后**只有 AniList 是开着的**，其它源需要自己到「片源」里打开——见下一节。
 
