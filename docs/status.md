@@ -174,7 +174,7 @@ Unable to find a suitable output format for 'C:\Users\...\probe-anich-39482-ep1.
 **证据**
 
 - `node dev/test-account-store.mjs`：21 项全过——两个 store 实例互相可见、脱敏不含 secret、v1 文件迁移（cookie→secret、mid→fields.uid、空槽位丢弃）、落盘为 v2、registry 的 `accountProviders/account` 与「未知的账号来源」、空 token 报错。
-- `node dev/test-accounts.mjs`（真接口、真账户）：`/accounts` 返回 `bilibili`（Elisoar / uid 1663081572）与 `anilist`（Elisoar / uid 7471757）两条已登录记录——这两条是从旧 v1 文件迁移出来的；`/accounts/qr` 拿到二维码与 key，poll 返回 `waiting 未扫码`；坏 token 分别报 `AniList: Invalid token`、`bilibili: 账号未登录`、`连不上 Bangumi（fetch failed）…`；未知 provider 报 `未知的账号来源: netflix`。
+- `node dev/test-accounts.mjs`（真接口、真账户）：`/accounts` 返回 `bilibili` 与 `anilist`（昵称与 uid 已隐去）两条已登录记录——这两条是从旧 v1 文件迁移出来的；`/accounts/qr` 拿到二维码与 key，poll 返回 `waiting 未扫码`；坏 token 分别报 `AniList: Invalid token`、`bilibili: 账号未登录`、`连不上 Bangumi（fetch failed）…`；未知 provider 报 `未知的账号来源: netflix`。
 - `node dev/probe-routes.mjs`：`/accounts` 的 `providers[0]` 是 `bilibili`（`kind: qr`，带 hint）。
 
 **环境说明**：`dev/test-accounts.mjs` 里的 `accounts/logout` 在沙箱内会以 `EPERM … accounts.json.tmp` 失败——测试进程被限制在工作区内写文件，不是代码问题（`torrent/config` 早先也是同一原因）。
