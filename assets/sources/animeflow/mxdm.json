@@ -1,0 +1,14 @@
+{
+  "api": "1",
+  "version": "1.0.0",
+  "name": "MX动漫",
+  "iconUrl": "https://www.dcc3.com/favicon.ico",
+  "baseUrl": "https://www.dcc3.com/",
+  "searchUrl": "https://www.dcc3.com/search/?wd={keyword}",
+  "searchList": "//div[@class='search container'] /ul /li",
+  "searchName": "/h3 /a",
+  "searchLink": "/h3 /a",
+  "lineNames": "//div[@class='playlist'] /div[2] /a",
+  "lineList": "//div[@class='playlist'] /div[@class='row'] /ul",
+  "episode": "//a"
+}

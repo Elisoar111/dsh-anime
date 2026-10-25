@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build / runtime output that must never be committed
+dev/*.html
+dev/*.png
+dev/.torrent-cache/
+*.log
+*.tmp
+*.part
+
+# 本机状态：账号凭据、下载记录、种子缓存都落在 DSH 的 state 目录，
+# 万一有人把 state 目录复制进仓库，这些也挡住
+accounts.json
+settings.json
+downloads.json
+torrent.json
+
+# 预压缩包（assets/vendor 里是从 npm 解出来的成品，*.tgz 只是下载来源）
+assets/vendor/*.tgz
+
+# editors / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,45 @@
+{
+  "api": "2",
+  "version": "1.2.0",
+  "name": "girigiri愛動漫",
+  "iconUrl": "https://ani.girigirilove.com/guanggao/fdd2694db66628a9deadd86e50aedd43.png",
+  "baseUrl": "https://ani.girigirilove.com",
+  "searchUrl": "",
+  "searchList": "",
+  "searchName": "",
+  "searchLink": "",
+  "lineNames": "",
+  "lineList": "",
+  "episode": "",
+  "searchMode": "api",
+  "chapterMode": "api",
+  "searchApiConfig": {
+    "request": {
+      "method": "GET",
+      "url": "https://m3u8.girigirilove.com/api.php/Vod/get_list",
+      "query": {
+        "vod_name": "{keyword}",
+        "offset": "0",
+        "limit": "24"
+      }
+    },
+    "listPath": "$.info.rows[*]",
+    "namePath": "$.vod_name",
+    "sourcePath": "$.vod_id"
+  },
+  "chapterApiConfig": {
+    "request": {
+      "method": "GET",
+      "url": "https://m3u8.girigirilove.com/api.php/Vod/get_detail",
+      "query": {
+        "vod_id": "{source}"
+      }
+    },
+    "format": "delimited",
+    "roadNamesPath": "$.info.vod_play_from",
+    "roadEpisodesPath": "$.info.vod_play_url",
+    "roadSeparator": "$$$",
+    "episodeSeparator": "#",
+    "fieldSeparator": "$"
+  }
+}

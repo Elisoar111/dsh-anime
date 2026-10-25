@@ -1,0 +1,25 @@
+{
+ "fetchedAt": "2026-10-24T19:32:59.985Z",
+ "sources": [
+  {
+   "file": "girigiri.json",
+   "name": "girigiri愛動漫",
+   "api": "2",
+   "base": "https://ani.girigirilove.com"
+  },
+  {
+   "file": "gpjda.json",
+   "name": "萌道动漫",
+   "api": "1",
+   "base": "https://www.gpjda.com/"
+  },
+  {
+   "file": "mxdm.json",
+   "name": "MX动漫",
+   "api": "1",
+   "base": "https://www.dcc3.com/"
+  }
+ ],
+ "prunedAt": "2026-10-24T19:50:06.689Z",
+ "note": "Only sources that answered when probed on 2026-10-25 are kept; the rest were removed (see docs/status.md)."
+}

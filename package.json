@@ -1,0 +1,60 @@
+{
+  "name": "@local/dsh-anime",
+  "version": "1.0.13",
+  "private": true,
+  "description": "追番 — an anime tracker for DeepSeek Harness: seasonal charts, airing schedule, search, watchlist, detail pages, bilibili/FQDM/AniCh streaming, torrents, downloads and OP/ED themes, with its own player (MSE + libass + Anime4K).",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "anime",
+    "anilist",
+    "bangumi",
+    "animeko",
+    "bilibili",
+    "torrent",
+    "webtorrent",
+    "player",
+    "anime4k",
+    "libass"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "lib",
+    "locale",
+    "assets",
+    "icon.svg",
+    "cordis.patch.yml",
+    "LICENSE",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  },
+  "scripts": {
+    "check": "node dev/load-client.mjs && node dev/audit-tkeys.mjs && node dev/audit-routes.mjs && node dev/audit-libs.mjs && node dev/check-default-sources.mjs && node dev/check-theme-player.mjs",
+    "render-check": "node dev/render-check.mjs anilist 16498"
+  },
+  "dependencies": {
+    "webtorrent": "^1.9.7"
+  }
+}

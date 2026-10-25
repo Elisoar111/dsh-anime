@@ -1,0 +1,31 @@
+import { WebGLRendererBase } from './webgl-base.ts';
+import type { ASSImage } from '../util.ts';
+export declare class WebGL1Renderer extends WebGLRendererBase<WebGLRenderingContext> {
+    instancedArraysExt: ANGLE_instanced_arrays;
+    u_tex: WebGLUniformLocation | null;
+    u_atlasSize: WebGLUniformLocation | null;
+    a_quadPos: number;
+    a_destRect: number;
+    a_srcXY: number;
+    a_color: number;
+    quadPosBuffer: WebGLBuffer;
+    instanceDestRectBuffer: WebGLBuffer;
+    instanceSrcBuffer: WebGLBuffer;
+    instanceColorBuffer: WebGLBuffer;
+    instanceDestRectData: Float32Array<ArrayBuffer>;
+    instanceSrcData: Float32Array<ArrayBuffer>;
+    instanceColorData: Float32Array<ArrayBuffer>;
+    instanceCapacity: number;
+    atlasPages: WebGLTexture[];
+    atlasSize: number;
+    maxTextureSize: number;
+    uploadCache: Set<string>;
+    tightData: Uint8Array | null;
+    constructor(canvas: OffscreenCanvas);
+    _initGL(): void;
+    ensureInstanceCapacity(count: number): void;
+    createAtlasPage(size: number): WebGLTexture;
+    ensureAtlas(size: number, pages: number): void;
+    render(images: ASSImage[], heap: Uint8Array): void;
+    destroy(): void;
+}
