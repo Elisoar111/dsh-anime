@@ -1,0 +1,19 @@
+# 源码与文档统一用 LF：Windows 上 git 默认会把它们改成 CRLF，diff 会出现整文件改写。
+* text=auto eol=lf
+
+*.js   text eol=lf
+*.mjs  text eol=lf
+*.cjs  text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+*.yml  text eol=lf
+*.svg  text eol=lf
+*.glsl text eol=lf
+
+# 二进制：别尝试合并或转换
+*.png  binary
+*.jpg  binary
+*.wasm binary
+*.tgz  binary
+*.br   binary
+*.gz   binary
